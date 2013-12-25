@@ -49,14 +49,13 @@
   };
 
 
-  function run(input, context) {
+  function run(input) {
     var state = STATES.INTERPRET,
+        tokens = input.split(' '),
         token,
         definition = {};
 
-    context.tokens = input.split(' ');
-
-    while (typeof (token = context.tokens.shift()) !== 'undefined') {
+    while (typeof (token = tokens.shift()) !== 'undefined') {
       switch (state) {
         case STATES.INTERPRET:
           if (isNaN(token) && !(token in dictionary)) {
@@ -88,25 +87,16 @@
 
       function createDefinition(content) {
         return function() {
-          context.tokens = content.concat(context.tokens);
+          tokens = content.concat(tokens);
           return STATES.INTERPRET;
         }
       }
     }
-
-
-
-
   }
 
   function stackUnderflow(arity) {
     return (stack.length < arity) && console.log('Error: stack underflow!');
   }
 
-  function eval(cmd, context, filename, callback) {
-    var input = cmd.substr(1).substr(0, cmd.length-2).trim();
-    callback(null, run(input, context));
-  }
-
-  require('repl').start({ eval: eval });
+  module.exports = { run: run };
 })();
