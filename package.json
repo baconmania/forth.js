@@ -1,0 +1,20 @@
+{
+  "name": "forth.js",
+  "version": "0.0.1",
+  "description": "A simple Forth interpreter.",
+  "main": "forth.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baconmania/forth.js.git"
+  },
+  "keywords": [
+    "simple",
+    "forth",
+    "interpreter"
+  ],
+  "author": "Gowtam Lal",
+  "license": "GPLv2",
+  "bugs": {
+    "url": "https://github.com/baconmania/forth.js/issues"
+  }
+}
